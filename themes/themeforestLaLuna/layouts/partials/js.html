@@ -1,0 +1,150 @@
+<script>
+
+  let backgrounds = [];
+  function initPageBackground() {
+        backgrounds = [
+      {{ range readDir "static/backgrounds" }}
+      {{ if (findRE ".png$|.jpg|.gif$" .Name) }}
+            "/backgrounds/{{ .Name }}",
+        {{ end }}
+      {{ end }}
+            ]
+
+
+      let vegasBG;
+      let multibg = []
+      if(backgrounds.length == 0){
+          vegasBG = "demo/bg-4.jpg";
+        }
+      else{
+          vegasBG = backgrounds[0];
+      }
+
+      if(backgrounds.length < 3){
+          multibg = ["demo/bg-4.jpg", "demo/bg-5.jpg", "demo-6.jpg"];
+      }
+      else{
+          multibg = backgrounds;
+      }
+
+      if($('body').hasClass('image-background')) { // IMAGE BACKGROUND
+
+          $('body').vegas({
+              delay: 0,
+              slides: [
+                  { src: vegasBG }
+                ]
+            });
+
+        } else if( $('body').hasClass('slide-background') ) { // SLIDESHOW BACKGROUND
+
+            $('body').vegas({
+                delay: 15000,
+                slides: [
+                    { src: multibg[0]},
+                    { src: multibg[1] },
+                    { src: multibg[2] }
+                  ],
+                timer: false
+              });
+
+          } else if( $('body').hasClass('kenburns-background') ) { // Kenburns BACKGROUND
+
+              $('body').vegas({
+                  delay: 15000,
+                  slides: [
+                    { src: multibg[0]},
+                    { src: multibg[1] },
+                    { src: multibg[2] }
+                    ],
+                  animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ],
+                  timer: false
+                });
+
+            } else if($('body').hasClass('section-background')) { // SECTION BACKGROUND
+
+                $('.home .overlay-image').vegas({
+                    delay: 0,
+                    slides: [
+                        { src: "demo/bg-7.jpg" }
+                      ]
+                  });
+
+                $('.about .overlay-image').vegas({
+                    delay: 0,
+                    slides: [
+                        { src: "demo/bg-2.jpg" }
+                      ]
+                  });
+
+                $('.contact .overlay-image').vegas({
+                    delay: 0,
+                    slides: [
+                        { src: "demo/bg-3.jpg" }
+                      ]
+                  });
+
+                $('.slideshow-1 .overlay-image').vegas({
+                    delay: 3000,
+                    slides: [
+                        { src: "demo/bg-4.jpg" },
+                        { src: "demo/bg-5.jpg" },
+                        { src: "demo/bg-6.jpg" }
+                      ],
+                    timer: false
+                  });
+
+              } else if($('body').hasClass('youtube-background')) { // YOUTUBE VIDEO BACKGROUND
+                  if($('body').hasClass('mobile')) {
+
+                      // Default background on mobile devices
+                      $('body').vegas({
+                          delay: 0,
+                          slides: [
+                              { src: "demo/video/video.jpg" }
+                            ]
+                        });
+
+                    } else {
+                        $(".player").each(function() {
+                            $(".player").mb_YTPlayer();
+                          });
+                      }
+                } else if($('body').hasClass('youtube-list-background')) { // YOUTUBE LIST VIDEOS BACKGROUND
+                    if($('body').hasClass('mobile')) {
+
+                        // Default background on mobile devices
+                        $('body').vegas({
+                            delay: 0,
+                            slides: [
+                                { src: "demo/video/video.jpg" }
+                              ]
+                          });
+
+                      } else {
+
+                          var videos = [
+                              {videoURL: "0pXYp72dwl0",containment:'body',autoPlay:true, mute:true, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:true},
+                              {videoURL: "9d8wWcJLnFI",containment:'body',autoPlay:true, mute:true, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:false},
+                              {videoURL: "nam90gorcPs",containment:'body',autoPlay:true, mute:true, startAt:0,opacity:1, loop:false, ratio:"4/3", addRaster:true}
+                            ];
+
+                          $(".player").YTPlaylist(videos, true);
+
+                        }
+                  } else if($('body').hasClass('mobile')) { // MOBILE BACKGROUND - Image background instead of video on mobile devices
+                      if($('body').hasClass('video-background')) {
+
+                          // Default background on mobile devices
+                          $("body").backstretch([
+                              "demo/video/video.jpg"
+                            ]);
+
+                        }
+                    }
+
+    }
+
+</script>
+
+<!-- vim: set ft=html : -->

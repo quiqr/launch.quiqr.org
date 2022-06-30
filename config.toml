@@ -1,0 +1,4 @@
+baseURL = "https://launch.quiqr.cloud"
+languageCode = "en-us"
+theme = "themeforestLaLuna"
+title = "Quiqr CMS for Hugo"

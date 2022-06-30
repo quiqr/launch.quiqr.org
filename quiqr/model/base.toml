@@ -1,0 +1,279 @@
+hugover = "0.88.1"
+
+[[serve]]
+key = "default"
+config = "config.toml"
+
+[[build]]
+key = "default"
+config = "config.toml"
+
+[[menu]]
+key = "content"
+title = "Content"
+
+  [[menu.menuItems]]
+  key = "frontpage"
+
+  [[menu.menuItems]]
+  key = "about"
+  [[menu.menuItems]]
+  key = "contact"
+
+[[menu]]
+key = "settings"
+title = "Settings"
+
+  [[menu.menuItems]]
+  key = "mainConfig"
+  [[menu.menuItems]]
+  key = "brand"
+  [[menu.menuItems]]
+  key = "features"
+
+[[singles]]
+key = "frontpage"
+title = "Front Page"
+file = "content/_index.md"
+dataformat = "yaml"
+
+  [[singles.fields]]
+  key = "title"
+  title = "Site Title"
+  type = "string"
+  tip = "Your page title."
+
+  [[singles.fields]]
+  key = "show_clock"
+  title = "Show clock"
+  type = "boolean"
+  tip = "Show Hide the clock"
+
+  [[singles.fields]]
+  key = "clock_end_time"
+  title = "Clock Count Time Date Time"
+  type = "string"
+  default = "2025/05/1 12:00:00"
+  tip = "Enter the time in the format: 2016/05/1 12:00:00"
+
+  [[singles.fields]]
+  key = "mainContent"
+  title = "Main Text"
+  type = "string"
+  multiLine = true
+
+  [[singles.fields]]
+  key = "txt_enter_email_address"
+  title = "Text for email address field"
+  type = "string"
+
+  [[singles.fields]]
+  key = "txt_subscribe"
+  title = "Text for subscribe button"
+  type = "string"
+
+[[singles]]
+key = "about"
+title = "About Page"
+file = "content/about.md"
+dataformat = "yaml"
+
+  [[singles.fields]]
+  key = "title"
+  title = "Site Title"
+  type = "string"
+  tip = "Your page title."
+
+  [[singles.fields]]
+  key = "mainContent"
+  title = "Main Text"
+  type = "string"
+  multiLine = true
+
+[[singles]]
+key = "contact"
+title = "Contact"
+file = "content/contact.md"
+dataformat = "yaml"
+
+  [[singles.fields]]
+  key = "title"
+  title = "Site Title"
+  type = "string"
+  tip = "Your page title."
+
+  [[singles.fields]]
+  key = "mainContent"
+  title = "Main Text"
+  type = "string"
+  multiLine = true
+
+  [[singles.fields]]
+  key = "txt_insert_email_address"
+  title = "Text for email address field"
+  type = "string"
+
+  [[singles.fields]]
+  key = "txt_insert_name"
+  title = "Text for name field"
+  type = "string"
+
+  [[singles.fields]]
+  key = "txt_insert_message"
+  title = "Text for message field"
+  type = "string"
+
+
+  [[singles.fields]]
+  key = "txt_send"
+  title = "Text for send button"
+  type = "string"
+
+
+[[singles]]
+key = "mainConfig"
+title = "Site Configuration"
+file = "config.toml"
+
+  [[singles.fields]]
+  key = "title"
+  title = "Site Title"
+  type = "string"
+  tip = "Your page title."
+
+  [[singles.fields]]
+  key = "baseURL"
+  title = "Base URL"
+  type = "string"
+  tip = "Your site URL."
+
+  [[singles.fields]]
+  key = "favicon"
+  title = "Favicon Image"
+  type = "bundle-manager"
+  tip = "upload the image to be used as favicon"
+  path = "/static/"
+  forceFileName = "favicon.png"
+  extensions = ["png"]
+
+  [[singles.fields.fields]]
+  key = "thumb"
+  title = "Thumb"
+  type = "bundle-image-thumbnail"
+
+[[singles]]
+key = "brand"
+title = "Brand"
+file = "data/brand.yaml"
+
+  [[singles.fields]]
+  key = "text_color"
+  title = "Text Color"
+  type = "string"
+
+  [[singles.fields]]
+  key = "text_font"
+  title = "Text Font"
+  type = "font-picker"
+  tip = "choose your font"
+  limit = 50
+  xvariants = ["regular"]
+  categories = ["handwriting"]
+  xfamilies = ["Heebo","Arimo"]
+  xdefault = "Arimo"
+
+  [[singles.fields]]
+  key = "logo"
+  title = "Logo Image"
+  type = "bundle-manager"
+  tip = "upload the image to be used as favicon"
+  path = "/static/logo/"
+  maxItems = 1
+  extensions = ["svg","png","jpg","gif"]
+
+  [[singles.fields.fields]]
+  key = "thumb2"
+  title = "Thumb"
+  type = "bundle-image-thumbnail"
+
+  [[singles.fields]]
+  key = "facebook"
+  title = "Facebook Profile URL"
+  type = "string"
+  tip = "Open the facebook page in your browser and copy the URL from the address bar, <br>keep empty to disable"
+
+  [[singles.fields]]
+  key = "twitter"
+  title = "Twitter Profile URL"
+  type = "string"
+  tip = "Open the twitter profile in your browser and copy the URL from the address bar, <br>keep empty to disable"
+
+  [[singles.fields]]
+  key = "pinterest"
+  title = "Pinterest Profile URL"
+  type = "string"
+  tip = "Open the Pinterest profile in your browser and copy the URL from the address bar, <br>keep empty to disable"
+
+  [[singles.fields]]
+  key = "github"
+  title = "GitHub Profile URL"
+  type = "string"
+  tip = "Open the GitHub public profile in your browser and copy the URL from the address bar, <br>keep empty to disable"
+
+  [[singles.fields]]
+  key = "linkedin"
+  title = "LinkedIn Profile URL"
+  type = "string"
+  tip = "Open the LinkedIn public profile in your browser and copy the URL from the address bar, <br>keep empty to disable"
+
+ [[singles]]
+key = "features"
+title = "Backgrounds"
+file = "data/features.yaml"
+
+  [[singles.fields]]
+  key = "slide_animation"
+  title = "Slide Animation"
+  default = "image-background"
+  type = 'select'
+  [[singles.fields.options]]
+  text = 'Image Background'
+  value = "image-background"
+  [[singles.fields.options]]
+  text = 'Slide Background'
+  value = 'slide-background'
+  [[singles.fields.options]]
+  text = 'Ken Burns Background'
+  value = 'kenburns-background'
+
+  [[singles.fields]]
+  key = "backgrounds"
+  title = "Background Images"
+  type = "bundle-manager"
+  tip = "upload the image to be used as favicon"
+  path = "/static/backgrounds/"
+  maxItems = 4
+  extensions = ["png", "jpg", "jpeg"]
+
+  [[singles.fields.fields]]
+  key = "thumb"
+  title = "Thumb"
+  type = "bundle-image-thumbnail"
+
+
+[[singles]]
+key = "images"
+title = "Images"
+file = "static/images/.pogo-images.md"
+
+  [[singles.fields]]
+  key = "image"
+  type = "bundle-manager"
+  title = "Site Images"
+  path = ""
+  extensions = ["svg","png","jpg","gif"]
+
+  [[singles.fields.fields]]
+  key = "thumb"
+  title = "Thumb"
+  type = "bundle-image-thumbnail"

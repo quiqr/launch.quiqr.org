@@ -1,0 +1,9 @@
+---
+subject: "contactform"
+from: you-have-mail@quiqr.app
+to: post@pimsnel.com
+senders_email_field: email-address-sender
+reply_to_sender: true
+redirect_to: /thanks/
+antispam: slide
+

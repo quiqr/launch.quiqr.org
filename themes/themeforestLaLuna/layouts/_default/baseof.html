@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    <body class="{{$.Site.Data.features.slide_animation}}">
+
+        {{- block "main" . }}{{- end }}
+
+        {{- partial "footer.html" . -}}
+        {{- partial "js.html" . -}}
+    </body>
+</html>

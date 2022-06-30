@@ -1,0 +1,23 @@
+﻿body {
+	overflow-y: auto;
+}
+
+#counter .counter-box {
+	border: none;
+}
+
+input, textarea, select {
+	border-bottom: 2px solid #fff;
+}
+
+.contact-form input, .contact-form textarea, .contact-form select {
+	border-bottom: 2px solid #fff;
+}
+
+.gradient-border {
+	display: none;
+}
+
+.animated {
+	visibility: visible;
+}

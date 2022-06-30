@@ -1,0 +1,47 @@
+{{ define "main" }}
+
+  <ul class="socials-icons onstart animated" data-animation="fadeInLeft" data-animation-delay="600">
+
+    {{ with $.Site.Data.brand.facebook }}
+    <li><a href="$.Site.Data.brand.facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.github }}
+    <li><a href="{{$.Site.Data.brand.github}}" class="github"><i class="fa fa-github"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.twitter }}
+    <li><a href="{{$.Site.Data.brand.twitter}}" class="twitter"><i class="fa fa-twitter"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.pinterest }}
+    <li><a href="{{$.Site.Data.brand.pinterest}}" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.linkedin }}
+    <li><a href="{{$.Site.Data.brand.linkedin}}" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+    {{ end }}
+  </ul>
+
+  <section id="home" class="home section fullscreen">
+    <div class="section-container">
+      <div class="container">
+        <div class="logo_header onstart animated" data-animation="fadeInDown" data-animation-delay="400">
+          <!-- LOGO -->
+          {{ range readDir "static/logo" }}
+            {{ if (findRE ".png$|.jpg|.gif$|.svg$" .Name) }}
+              <img src="/logo/{{ .Name }}" style="max-width:220px" alt="" />
+            {{ end }}
+          {{ end }}
+
+          <div class="color-white onstart animated" data-animation="fadeInDown" data-animation-delay="800">{{.Content}}</div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{{ end }}
+

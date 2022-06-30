@@ -1,0 +1,147 @@
+{{ define "main" }}
+
+  <!-- vim: set ft=html: -->
+
+  <div id="preloader">
+    <div id="loading-animation">&nbsp;</div>
+  </div>
+
+  <div class="navigation animateonload onstart animated" data-animation="fadeInRightBig" data-animation-delay="600">
+    <div class="nav-container">
+      <div class="top-line"></div>
+      <!-- START MENU -->
+      <ul>
+        <li><a data-target="#home" class="onmenu current">Home<span></span></a></li>
+        <li><a data-target="#about" class="onmenu">About<span></span></a></li>
+        <li><a data-target="#contact" class="onmenu">Contact<span></span></a></li>
+      </ul>
+      <!-- END MENU -->
+      <div class="bottom-line"></div>
+    </div>
+  </div>
+
+  <ul class="socials-icons onstart animated" data-animation="fadeInLeft" data-animation-delay="600">
+
+    {{ with $.Site.Data.brand.facebook }}
+    <li><a href="$.Site.Data.brand.facebook" class="facebook"><i class="fa fa-facebook"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.github }}
+    <li><a href="{{$.Site.Data.brand.github}}" class="github"><i class="fa fa-github"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.twitter }}
+    <li><a href="{{$.Site.Data.brand.twitter}}" class="twitter"><i class="fa fa-twitter"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.pinterest }}
+    <li><a href="{{$.Site.Data.brand.pinterest}}" class="pinterest"><i class="fa fa-pinterest"></i></a></li>
+    {{ end }}
+
+    {{ with $.Site.Data.brand.linkedin }}
+    <li><a href="{{$.Site.Data.brand.linkedin}}" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
+    {{ end }}
+  </ul>
+
+  <section id="home" class="home section fullscreen">
+    <div class="section-container">
+      <div class="container">
+        <div class="logo_header onstart animated" data-animation="fadeInDown" data-animation-delay="400">
+          <!-- LOGO -->
+          {{ range readDir "static/logo" }}
+            {{ if (findRE ".png$|.jpg|.gif$|.svg$" .Name) }}
+              <img src="/logo/{{ .Name }}" style="max-width:220px" alt="" />
+            {{ end }}
+          {{ end }}
+        </div>
+
+        {{ if .Params.show_clock }}
+        <!-- COUNTER -->
+        <div class="countdown onstart animated" data-countdown="{{.Params.clock_end_time}}" data-animation="fadeInDown" data-animation-delay="600"></div>
+        {{ end }}
+
+        <h3 class="color-white onstart animated" data-animation="fadeInDown" data-animation-delay="800">{{.Content}}</h3>
+
+        <!-- Subscribe Form -->
+        <div id="form" class="onstart animated" data-animation="fadeInDown" data-animation-delay="1000">
+          <div class="form-container">
+            <div class="page-section" id="signup">
+
+              <form class="subscriptionForm position-relative" method="post" id="mc-form" action="https://forms.quiqr.app/launch">
+                <input type="email" id="email" name="email" placeholder="{{.Params.txt_enter_email_address}}"/>
+                <div class="gradient-border"></div>
+                <input type="submit" id="subscribebtn" value="{{.Params.txt_subscribe}}" />
+              </form>
+              <p class="error-message"></p>
+              <p class="success-message"></p>
+            </div><!--end page section -->
+          </div><!-- end form container -->
+        </div><!-- end Subscribe Form -->
+      </div>
+    </div>
+    <!-- OVERLAY -->
+    <div class="overlay">
+      <div class="overlay-color"></div>
+    </div>
+  </section>
+
+
+{{ with .Site.GetPage "/about.md" }}
+
+  <section id="about" class="about section fullscreen">
+    <div class="section-container">
+      <div class="container animated" data-animation="flipInX">
+        <!-- START TITLE -->
+        <h3 class="section-title">{{ .Title }}</h3><!-- END TITLE -->
+        <div class="lead color-white">
+        {{ .Content }}
+        </div>
+      </div>
+    </div>
+    <!-- OVERLAY -->
+    <!-- OVERLAY -->
+    <div class="overlay">
+      <div class="overlay-color"></div>
+    </div>
+  </section>
+{{ end }}
+
+{{ with .Site.GetPage "/contact.md" }}
+  <section id="contact" class="contact section fullscreen">
+    <div class="section-container">
+      <div class="container animated" data-animation="flipInX">
+        <!-- START TITLE -->
+        <h3 class="section-title">{{ .Title }}</h3><!-- END TITLE -->
+        <div class="lead color-white">{{ .Content }}</div>
+        <div class="col-md-12">
+          <!-- START FORM -->
+          <form method="post" action="https://forms.quiqr.app/launch" class="xxxcontact-form">
+            <div class="row">
+              <div class="col-md-6 position-relative">
+                <input type="text" name="name" placeholder="{{ .Params.txt_insert_name}}" class="required">
+                <div class="gradient-border"></div>
+              </div>
+              <div class="col-md-6 position-relative">
+                <input type="email" name="email" placeholder="{{ .Params.txt_insert_email_address}}" class="contact-form-email required">
+                <div class="gradient-border"></div>
+              </div>
+              <div class="col-md-12 position-relative">
+                <textarea name="message" placeholder="{{ .Params.txt_insert_message}}" class="required"></textarea>
+                <div class="gradient-border"></div>
+              </div>
+            </div>
+            <div class="response-message"></div>
+            <input type="submit" value="{{ .Params.txt_send}}" name="submit">
+          </form><!-- END FORM -->
+        </div>
+      </div>
+    </div>
+    <!-- OVERLAY -->
+    <!-- OVERLAY -->
+    <div class="overlay">
+      <div class="overlay-color"></div>
+    </div>
+  </section>
+  {{end}}
+
+{{ end }}
